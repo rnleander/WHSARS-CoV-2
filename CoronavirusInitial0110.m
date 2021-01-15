@@ -92,9 +92,7 @@ kM0=10^-4;
 kM1=3*kM0;
 
 %%%%Alveolar cells infection parameters
-%beta=1/5;
-%KV=10^5;
-%KV=3*10^3;
+
 sigmaI=1/72; 
 
 %%%%%%%%%%%%%%%%%%%%%%
@@ -108,32 +106,30 @@ sigmaF=0.35;
 alpha=0.6;
 qF=20;
 KF=100;
-%KF=0.008*100000;
-
-
-
-%%%%%%Virus
-%rhoV=10;
-rhoVs=rhoV*10^-3;
-sigmaV=1/3;
-
-
-%%%%Toxins and chemokines
-%rhoT=0.08;
-%rhoT=0.12;
-
-r=0.1;
-
-%KT=5*10^2;
-KT=3*10^2;
-%KX=50;
-sigmaX=1;
-%sigmaY=8.32; %%%%%%%%%%%Not sure 
 
 rhoF1=0.01;
 rhoF2=0.0;
 
+
+%%%%%%Virus
+
+rhoVs=rhoV*10^-3;
+sigmaV=1/3;
 qV=1;
+
+%%Toxins
+r=0.1;
+
+
+KT=3*10^2;
+
+%Chemokines
+sigmaX=1;
+
+
+
+
+
 
 
 
@@ -147,13 +143,6 @@ AT=A1+A2+A2n+A2s+A2sn+I+Is;
 %compute per capita rate of diff
 
 a=diff_rate*(1-A1/KA1);
-
-%dydt=zeros(1,12);
-% dydt(1)=a*(A2+A2n+A2s+A2sn)-sigmaA*A1-r*T/(T+KT)*A1;
-% 
-% dydt(2)=r2*(1-AT/KA)*A2-(a+sigmaA)*A2-beta*V*A2/(V+KV+qV*A2/2/C1)-alpha*F*A2/(qF*(A2+A2n+A1+I)*10^-2/C1/6.02+KF+F)-r*T/(T+KT)*A2+mu*A2s;
-% 
-% dydt(3)=r2*(1-AT/KA)*A2n-(a+sigmaA)*A2n-alpha*F*A2n/(qF*(A2+A2n+A1+I)*10^-2/C1/6.02+KF+F)-r*T/(T+KT)*A2n+mu*A2sn;
 
 dydt(1)=a*(A2+A2n+A2s+A2sn)-sigmaA*A1-r*(T/(T+KT))*A1;
 
