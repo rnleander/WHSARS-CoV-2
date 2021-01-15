@@ -1,0 +1,8 @@
+#ignoring weird apple DS_Store
+.DS_Store
+
+#ignoring figures
+*.fig
+
+#ignore autosave files
+*.m~
