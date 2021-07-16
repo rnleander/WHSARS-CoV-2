@@ -36,7 +36,6 @@ y0=[A1_Initial; pp2*A2_Initial; (1-pp2)*A2_Initial; 0.0; 0.0; 0.0; 0.0; 0.0; 0.0
 
 %%%%We assume the viral load in the lung is two magnitue larger than saliva
 p2=plot(t2/24-incubation, 6-2+log10(y2(:, 14)),'LineWidth', 2);
-hold on
 
 %%%%use the estimated paprameters to graph the solutions 
 pp1=.025;
@@ -45,27 +44,27 @@ y0=[A1_Initial; pp1*A2_Initial; (1-pp1)*A2_Initial; 0.0; 0.0; 0.0; 0.0; 0.0; 0.0
 [t1,y1] = ode15s(funfunfun, [0 24*(T+incubation)], y0);
 
 %%%%We assume the viral load in the lung is two magnitue larger than saliva
-p1=plot(t1/24-incubation, 6-2+log10(y1(:, 14)),'--','LineWidth', 2);
+p1=plot(t1/24-incubation, 6-2+log10(y1(:, 14)),'--','LineWidth', 2)
 hold on 
 
 %%%%use the estimated paprameters to graph the solutions 
 pp0=.005;
-funfunfun=@(t, y) model1(t,y, rhoX, pp0, A1_Initial, A2_Initial);
+funfunfun=@(t, y) model1(t,y, rhoX, pp0, A1_Initial, A2_Initial)
 y0=[A1_Initial; pp0*A2_Initial; (1-pp0)*A2_Initial; 0.0; 0.0; 0.0; 0.0; 0.0; 0.0; 0.0; 0.0;  0.0; M_Initial; V_Initial];
 [t,y] = ode15s(funfunfun, [0 24*(T+incubation)], y0);
 
 %%%%We assume the viral load in the lung is two magnitue larger than saliva
-p0=plot(t/24-incubation, 6-2+log10(y(:, 14)),'--','LineWidth', 2);
+p0=plot(t/24-incubation, 6-2+log10(y(:, 14)),'--','LineWidth', 2)
 hold on 
 
 %%%%use the estimated paprameters to graph the solutions 
 pp3=0.1;
-funfunfun=@(t, y) model1(t,y, rhoX, pp3, A1_Initial, A2_Initial);
+funfunfun=@(t, y) model1(t,y, rhoX, pp3, A1_Initial, A2_Initial)
 y0=[A1_Initial; pp3*A2_Initial; (1-pp3)*A2_Initial; 0.0; 0.0; 0.0; 0.0; 0.0; 0.0; 0.0; 0.0;  0.0; M_Initial; V_Initial];
 [t3,y3] = ode15s(funfunfun, [0 24*(T+incubation)], y0);
 
 %%%%We assume the viral load in the lung is two magnitue larger than saliva
-p3=plot(t3/24-incubation, 6-2+log10(y3(:, 14)),'--','LineWidth', 2);
+p3=plot(t3/24-incubation, 6-2+log10(y3(:, 14)),'--','LineWidth', 2)
 
 
 ylabel('Viral load (log_{10})','FontSize', 20)
@@ -84,18 +83,18 @@ figure
 hold on 
 
 %%%%We assume the viral load in the lung is two magnitue larger than serum
-p2=plot(t2/24-incubation, y2(:, 2)+y2(:, 3)+y2(:, 4)+y2(:, 5),'LineWidth', 2);
+p2=plot(t2/24-incubation, y2(:, 2)+y2(:, 3)+y2(:, 4)+y2(:, 5),'LineWidth', 2)
 
 
 %%%%We assume the viral load in the lung is two magnitue larger than serum
-p1=plot(t1/24-incubation, y1(:, 2)+y1(:, 3)+y1(:, 4)+y1(:, 5),'--','LineWidth', 2);
+p1=plot(t1/24-incubation, y1(:, 2)+y1(:, 3)+y1(:, 4)+y1(:, 5),'--','LineWidth', 2)
 
 %%%%We assume the viral load in the lung is two magnitue larger than serum
-p0=plot(t/24-incubation, y(:, 2)+y(:, 3)+y(:, 4)+y(:, 5),'--','LineWidth', 2);
+p0=plot(t/24-incubation, y(:, 2)+y(:, 3)+y(:, 4)+y(:, 5),'--','LineWidth', 2)
 
 
 %%%%We assume the viral load in the lung is two magnitue larger than serum
-p3=plot(t3/24-incubation, y3(:, 2)+y3(:, 3)+y3(:, 4)+y3(:, 5),'--','LineWidth', 2);
+p3=plot(t3/24-incubation, y3(:, 2)+y3(:, 3)+y3(:, 4)+y3(:, 5),'--','LineWidth', 2)
 
 ylabel('A_2 cells (10^6 cells)','FontSize', 20)
 xlabel('Days','FontSize', 20)

@@ -75,9 +75,10 @@ funfunfun2=@(t, y) model5(t,y, rhoX, pp, A1_Initial, A2_Initial,incubation)
 %%%%We assume the viral load in the lung is two magnitue larger than serum
 p5=plot(t/24-incubation, 6-2+log10(y5(:, 14)),'--','LineWidth', 2)
 
-ylabel('Viral load (log_{10})')
-xlabel('days')
-legend([p1, p2, p3, p4, p5],{'No antiviral treatment','50% inhibition from day 1', '90% inhibition from day 1', '50% inhibition from day 3', '90% inhibition from day 3'},'Location','southeast')
+ylabel('Viral load (log_{10})','FontSize', 20)
+xlabel('Days','FontSize', 20)
+set(gca,'fontsize',16)
+legend([p1, p2, p3, p4, p5],{'No antiviral treatment','50% inhibition from day 1', '90% inhibition from day 1', '50% inhibition from day 3', '90% inhibition from day 3'},'Location','southeast','FontSize', 16)
 %legend([p1, p2, p3, p4, p5],{'No interferon treatment','\Delta F=0.1 K_F from day 1', '\Delta F=0.2 K_F from day 1', '\Delta F=0.1 K_F from day 3', '\Delta F=0.2 K_F from day 3'},'Location','southeast')
 exportgraphics(gcf,'AntiviralTreatment.eps')
 
@@ -124,10 +125,11 @@ funfunfun2=@(t, y) model5(t,y, rhoX, pp, A1_Initial, A2_Initial, incubation)
 %%%%We assume the viral load in the lung is two magnitue larger than serum
 p5=plot(t/24-incubation, y5(:, 2)+y5(:, 3)+y5(:, 4)+y5(:, 5),'--','LineWidth', 2)
 
-ylabel('A_2 cells (10^6 cells)')
-xlabel('days')
-legend([p1, p2, p3, p4, p5],{'No antiviral treatment','50% inhibition from day 1', '90% inhibition from day 1', '50% inhibition from day 3', '90% inhibition from day 3'},'Location','southeast')
-exportgraphics(gcf,'AntiviralTreatmentA1Cells.eps')
+ylabel('A_2 cells (10^6 cells)','FontSize', 20)
+xlabel('Days','FontSize', 20)
+set(gca,'fontsize',16)
+legend([p1, p2, p3, p4, p5],{'No antiviral treatment','50% inhibition from day 1', '90% inhibition from day 1', '50% inhibition from day 3', '90% inhibition from day 3'},'Location','southeast','FontSize', 16)
+exportgraphics(gcf,'AntiviralTreatmentA2Cells.eps')
 
 hold off 
 
@@ -171,9 +173,10 @@ funfunfun2=@(t, y) model5(t,y, rhoX, pp, A1_Initial, A2_Initial, incubation)
 %%%%We assume the viral load in the lung is two magnitue larger than serum
 p5=plot(t/24-incubation, y5(:, 6)+y5(:, 7),'--','LineWidth', 2)
 
-ylabel('I cells (10^6 cells)')
-xlabel('days')
-legend([p1, p2, p3, p4, p5],{'No antiviral treatment','50% inhibition from day 1', '90% inhibition from day 1', '50% inhibition from day 3', '90% inhibition from day 3'},'Location','southeast')
+ylabel('I cells (10^6 cells)','FontSize', 20)
+xlabel('Days','FontSize', 20)
+set(gca,'fontsize',16)
+legend([p1, p2, p3, p4, p5],{'No antiviral treatment','50% inhibition from day 1', '90% inhibition from day 1', '50% inhibition from day 3', '90% inhibition from day 3'},'Location','best','FontSize', 16)
 exportgraphics(gcf,'AntiviralTreatmentInfectedCells.eps')
 
 hold off 

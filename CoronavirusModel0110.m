@@ -16,7 +16,7 @@ SampleTData=(0:1:T)'*24;
 tdata=(0:1:T*24)';
 %ydata=interp1(SampleTData, SampleYdata, tdata,'spline');
 ydata=interp1(SampleTData, SampleYdata, tdata);
-plot(tdata/24, ydata)
+plot(tdata/24, ydata,'LineWidth', 2)
 hold on
 plot(SampleTData/24, SampleYdata, 'o')
 
@@ -73,104 +73,121 @@ funfunfun=@(t, y) model1(t,y, beta, KV, KX, rhoX, rhoT, rhoV, gamma, pp, A1_Init
 
 %%%%We assume the viral load in the lung is two magnitue larger than serum
 plot(t/24-incubation, 6-2+log10(y(:, 14)),'LineWidth', 2)
-ylabel('Viral load (log_{10})')
-xlabel('days')
+ylabel('Viral load (log_{10})','FontSize', 20)
+xlabel('Days','FontSize', 20)
+set(gca,'fontsize',16)
 exportgraphics(gcf,'viral.eps')
 
 
 
 figure
-plot(t1/24-incubation, y1(:, 1), 'LineWidth', 1)
-ylabel('A_1 cells (10^6 cells)')
-xlabel('days')
+plot(t1/24-incubation, y1(:, 1), 'LineWidth', 2)
+ylabel('A_1 cells (10^6 cells)','FontSize', 20)
+set(gca,'fontsize',16)
+xlabel('Days','FontSize', 20)
 exportgraphics(gcf,'A1.eps')
 
 
 figure
-plot(t1/24-incubation, y1(:, 2))
-ylabel('A_2^+ cells (10^6 cells)')
-xlabel('days')
+plot(t1/24-incubation, y1(:, 2),'LineWidth', 2)
+ylabel('A_2^+ cells (10^6 cells)','FontSize', 20, 'LineWidth', 2)
+xlabel('Days','FontSize', 20)
+set(gca,'fontsize',16)
 exportgraphics(gcf,'A2+.eps')
 
 figure
-plot(t1/24-incubation, y1(:, 3))
-ylabel('A_2^- cells (10^6 cells)')
-xlabel('days')
+plot(t1/24-incubation, y1(:, 3),'LineWidth', 2)
+ylabel('A_2^- cells (10^6 cells)','FontSize', 20, 'LineWidth', 2)
+xlabel('Days','FontSize', 20)
+set(gca,'fontsize',16)
 exportgraphics(gcf,'A2-.eps')
 
 
 figure
-plot(t1/24-incubation, y1(:, 4))
-ylabel('A_2^{*+} cells (10^6 cells)')
-xlabel('days')
+plot(t1/24-incubation, y1(:, 4),'LineWidth', 2)
+ylabel('A_2^{*+} cells (10^6 cells)','FontSize', 20, 'LineWidth', 2)
+xlabel('Days','FontSize', 20)
+set(gca,'fontsize',16)
 exportgraphics(gcf,'A2+s.eps')
 
 figure
-plot(t1/24-incubation, y1(:, 5))
-ylabel('A_2^{*-} cells (10^6 cells)')
-xlabel('days')
+plot(t1/24-incubation, y1(:, 5),'LineWidth', 2)
+ylabel('A_2^{*-} cells (10^6 cells)','FontSize', 20, 'LineWidth', 2)
+xlabel('Days','FontSize', 20)
+set(gca,'fontsize',16)
 exportgraphics(gcf,'A2-s.eps')
 
 figure
-plot(t1/24-incubation, y1(:, 2)+y1(:,3)+y1(:,4)+y1(:,5))
-xlabel('days')
+plot(t1/24-incubation, y1(:, 2)+y1(:,3)+y1(:,4)+y1(:,5), 'LineWidth', 2)
+ylabel('Healthy A_2 cells)','FontSize', 20)
+xlabel('Days','FontSize', 20)
+set(gca,'fontsize',16)
 exportgraphics(gcf, 'A2_total.eps')
 
 
 
 figure
-plot(t1/24-incubation, y1(:, 6))
-ylabel('I cells (10^6 cells)')
-xlabel('days')
+plot(t1/24-incubation, y1(:, 6),'LineWidth', 2)
+ylabel('I cells','FontSize', 20)
+xlabel('Days','FontSize', 20)
+set(gca,'fontsize',16)
 exportgraphics(gcf,'I.eps')
 
 figure
-plot(t1/24-incubation, y1(:, 7))
-ylabel('I^* cells (10^6 cells)')
-xlabel('days')
+plot(t1/24-incubation, y1(:, 7),'LineWidth', 2)
+ylabel('I^* cells (10^6 cells)','FontSize', 20)
+xlabel('Days','FontSize', 20)
+set(gca,'fontsize',16)
 exportgraphics(gcf,'Is.eps')
 
 figure
-plot(t1/24-incubation, y1(:, 8))
-ylabel('D cells (10^6 cells)')
-xlabel('days')
+plot(t1/24-incubation, y1(:, 8),'LineWidth', 2)
+ylabel('D cells (10^6 cells)','FontSize', 20)
+xlabel('Days','FontSize', 20)
+set(gca,'fontsize',16)
 exportgraphics(gcf,'D.eps')
 
 figure
-plot(t1/24-incubation, y1(:, 9))
-ylabel('Interferons')
-xlabel('days')
+plot(t1/24-incubation, y1(:, 9),'LineWidth', 2)
+ylabel('Interferons (pM)','FontSize', 20)
+xlabel('Days','FontSize', 20)
+set(gca,'fontsize',16)
 exportgraphics(gcf,'F.eps')
 
 figure
-plot(t1/24-incubation, y1(:, 10))
-ylabel('Chemoxines')
-xlabel('days')
+plot(t1/24-incubation, y1(:, 10),'LineWidth', 2)
+ylabel('Chemoxines (pM)','FontSize', 20)
+xlabel('Days','FontSize', 20)
+set(gca,'fontsize',16)
 exportgraphics(gcf,'X.eps')
 
 
 figure
-plot(t1/24-incubation, y1(:, 11))
-ylabel('Toxins')
-xlabel('days')
+plot(t1/24-incubation, y1(:, 11),'LineWidth', 2)
+ylabel('Toxins (10^6 NETs','FontSize', 20)
+xlabel('Days','FontSize', 20)
+set(gca,'fontsize',16)
 exportgraphics(gcf,'T.eps')
 
 figure
-plot(t1/24-incubation, y1(:, 12))
-ylabel('M^* cells (10^6 cells)')
-xlabel('days')
+plot(t1/24-incubation, y1(:, 12),'LineWidth', 2)
+ylabel('M^* cells (10^6 cells)','FontSize', 20)
+xlabel('Days','FontSize', 20)
+set(gca,'fontsize',16)
 exportgraphics(gcf,'Ms.eps')
 
 figure
-plot(t1/24-incubation, y1(:, 13))
-ylabel('M cells (10^6 cells)')
-xlabel('days')
+plot(t1/24-incubation, y1(:, 13),'LineWidth', 2)
+ylabel('M cells (10^6 cells)','FontSize', 20)
+xlabel('Days','FontSize', 20)
+set(gca,'fontsize',16)
 exportgraphics(gcf,'M.eps')
 
 figure
-plot(t1/24-incubation, log10(y1(:, 14))+6-2)
-ylabel('Log10 Virus')
-xlabel('days')
+plot(t1/24-incubation, log10(y1(:, 14))+6-2,'LineWidth', 2)
+ylabel('Log10 Virus','FontSize', 20)
+xlabel('Days','FontSize', 20)
+set(gca,'fontsize',16)
 exportgraphics(gcf,'V_long_run.eps')
 
 %compute R0

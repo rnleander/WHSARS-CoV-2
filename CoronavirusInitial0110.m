@@ -13,8 +13,8 @@ pp=.05;
 A1_Initial=1.96*10^4;
 A2_Initial=3.29*10^4;
 M_Initial=5.99*10^3;
-V_Initial=20*10^-6;
-y0=[A1_Initial; pp*A2_Initial; (1-pp)*A2_Initial; 0.0; 0.0; 0.0; 0.0; 0.0; 0.0; 0.0; 0.0;  0.0; M_Initial; V_Initial];
+V_Initial1=20*10^-6;
+y0=[A1_Initial; pp*A2_Initial; (1-pp)*A2_Initial; 0.0; 0.0; 0.0; 0.0; 0.0; 0.0; 0.0; 0.0;  0.0; M_Initial; V_Initial1];
 
 rhoX=0.006;
 
@@ -27,30 +27,58 @@ p1=plot(t/24-incubation, 6-2+log10(y(:, 14)),'LineWidth', 2)
 hold on 
 
 %%%%use the estimated paprameters to graph the solutions 
-V_Initial=200*10^-6;
-y0=[A1_Initial; pp*A2_Initial; (1-pp)*A2_Initial; 0.0; 0.0; 0.0; 0.0; 0.0; 0.0; 0.0; 0.0;  0.0; M_Initial; V_Initial];
-[t,y2] = ode15s(funfunfun, [0 24*(T+incubation)], y0);
+%V_Initial=200*10^-6;
+V_Initial2=2*10^-6;
+y0=[A1_Initial; pp*A2_Initial; (1-pp)*A2_Initial; 0.0; 0.0; 0.0; 0.0; 0.0; 0.0; 0.0; 0.0;  0.0; M_Initial; V_Initial2];
+[t2,y2] = ode15s(funfunfun, [0 24*(T+incubation)], y0);
 
 %%%%We assume the viral load in the lung is two magnitue larger than serum
-p2=plot(t/24-incubation, 6-2+log10(y2(:, 14)),'LineWidth', 2)
+p2=plot(t2/24-incubation, 6-2+log10(y2(:, 14)),'--','LineWidth', 2)
 
 %%%%use the estimated paprameters to graph the solutions 
-V_Initial=2000*10^-6;
-y0=[A1_Initial; pp*A2_Initial; (1-pp)*A2_Initial; 0.0; 0.0; 0.0; 0.0; 0.0; 0.0; 0.0; 0.0;  0.0; M_Initial; V_Initial];
-[t,y3] = ode15s(funfunfun, [0 24*(T+incubation)], y0);
+%V_Initial=2000*10^-6;
+V_Initial3=.2*10^-6;
+y0=[A1_Initial; pp*A2_Initial; (1-pp)*A2_Initial; 0.0; 0.0; 0.0; 0.0; 0.0; 0.0; 0.0; 0.0;  0.0; M_Initial; V_Initial3];
+[t3,y3] = ode15s(funfunfun, [0 24*(T+incubation)], y0);
 
 %%%%We assume the viral load in the lung is two magnitue larger than serum
-p3=plot(t/24-incubation, 6-2+log10(y3(:, 14)),'LineWidth', 2)
+p3=plot(t3/24-incubation, 6-2+log10(y3(:, 14)),'--','LineWidth', 2)
 
 
-ylabel('Viral load (log_{10})')
-xlabel('days')
-legend([p1, p2, p3],{'20 pfu/mL','200 pfu/mL','2000 pfu/mL'},'Location','southeast')
+ylabel('Viral load (log_{10})','FontSize', 20)
+xlabel('Days','FontSize', 20)
+set(gca,'fontsize',16)
+L1=sprintf('%.2f pfu/mL', V_Initial1*10^6);
+L2=sprintf('%.2f pfu/mL', V_Initial2*10^6);
+L3=sprintf('%.2f pfu/mL', V_Initial3*10^6);
+legend([p1, p2, p3],{L1,L2,L3},'Location','best','FontSize', 20)
 exportgraphics(gcf,'initial.eps')
 
 hold off 
 %plot(t/24-incubation, y5(:, 9),'--','LineWidth', 2)
+figure
+hold on 
 
+
+%%%%We assume the viral load in the lung is two magnitue larger than serum
+p1=plot(t/24-incubation, y(:, 2)+y(:, 3)+y(:, 4)+y(:, 5),'LineWidth', 2)
+
+
+%%%%We assume the viral load in the lung is two magnitue larger than serum
+p2=plot(t2/24-incubation, y2(:, 2)+y2(:, 3)+y2(:, 4)+y2(:, 5),'--','LineWidth', 2)
+
+
+%%%%We assume the viral load in the lung is two magnitue larger than serum
+p3=plot(t3/24-incubation, y3(:, 2)+y3(:, 3)+y3(:, 4)+y3(:, 5),'--','LineWidth', 2)
+
+ylabel('A_2 cells (10^6 cells)','FontSize', 20)
+xlabel('Days','FontSize', 20)
+set(gca,'fontsize',16)
+L1=sprintf('%.2f pfu/mL', V_Initial1*10^6);
+L2=sprintf('%.2f pfu/mL', V_Initial2*10^6);
+L3=sprintf('%.2f pfu/mL', V_Initial3*10^6);
+legend([p1, p2, p3],{L1,L2,L3},'Location','best','FontSize', 20)
+exportgraphics(gcf,'initial_A2cells.eps')
 
 %%%%%The model 
 function dydt = model1(t,y, rhoX, pp, A1_Initial, A2_Initial)    %%%%%%%%%%%%%%
